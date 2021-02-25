@@ -39,8 +39,8 @@ ENV variables:
 
 MONGODB_URL: Mongodb database link
 BASE_URL: Application base URL for generating short URL
-RETRIES: The maximum amout of retries for failing non unique urlCode
-URL_CODE_LENGTH: The lenght of the generated unique urlCode
+RETRIES: The maximum amount of retries for failing non unique urlCode
+URL_CODE_LENGTH: The length of the generated unique urlCode
 ```
 
 ## Endpoints
