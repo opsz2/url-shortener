@@ -1,10 +1,18 @@
 const assert = require("assert");
 const { isUri } = require("valid-url");
 const { MAX_RETRIES, MIN_URL_CODE_LENGTH } = require("../helpers/constants");
+const envPath = `${__dirname}/../../.env`;
 
-require("dotenv-safe").load({
-  path: `${__dirname}/../../.env`
-});
+try {
+  if (fs.existsSync(envPath)) {
+    require("dotenv-safe").load({
+      path: envPath
+    });
+  }
+} catch (err) {
+  console.error(err);
+}
+
 /**
  * config.js
  *
