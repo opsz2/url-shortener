@@ -5,13 +5,10 @@ const { generateShortUrlController, routeShortUrlController } = require('../cont
 
 const router = express.Router();
 
-/**
- * GET status
- */
-router.get('/status', (req, res) => res.send('URL shortener API is healthy'));
-
 router.route('/').post(validate(shortenUrl), generateShortUrlController);
 
 router.route('/:urlCode').get(routeShortUrlController);
+
+router.get('/', (req, res) => res.send('URL shortener API is healthy'));
 
 module.exports = router;

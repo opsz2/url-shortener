@@ -32,3 +32,5 @@ exports.connect = async () => {
   winston.info('mongoDB connected...');
   return mongoose.connection;
 };
+
+exports.mongoose = mongoose;

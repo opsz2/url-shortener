@@ -35,3 +35,8 @@ const init = async () => {
 };
 
 init();
+/**
+ * Exports express
+ * @public
+ */
+module.exports = app;

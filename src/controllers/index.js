@@ -7,7 +7,7 @@ exports.generateShortUrlController = runAsync(async (req, res, next) => {
 
   const url = await generateShortUrl(originalUrl);
 
-  return res.status(httpStatus.OK).json({ url });
+  return res.status(httpStatus.OK).json({ data: url });
 });
 
 exports.routeShortUrlController = runAsync(async (req, res, next) => {
@@ -16,7 +16,7 @@ exports.routeShortUrlController = runAsync(async (req, res, next) => {
   const url = await getUrl({ urlCode });
 
   if (!url) {
-    return res.status(httpStatus.BAD_REQUEST).json('Invalid short URL');
+    return res.status(httpStatus.BAD_REQUEST).json({ message: 'Invalid short URL' });
   }
 
   return res.redirect(url.originalUrl);

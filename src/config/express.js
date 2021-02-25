@@ -37,7 +37,7 @@ app.use(helmet());
 app.use(cors());
 
 // mount api routes
-app.use('/', routes);
+app.use('/v1', routes);
 
 // if error is not an instanceOf APIError, convert it.
 app.use(error.converter);
