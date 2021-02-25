@@ -1,15 +1,15 @@
-const httpStatus = require("http-status");
-const { Url } = require("../models");
-const { generateUrlCode, APIError } = require("../helpers");
-const { baseUrl, retriesAllowed } = require("../config/vars");
-const winston = require("winston");
+const httpStatus = require('http-status');
+const winston = require('winston');
+const { Url } = require('../models');
+const { generateUrlCode, APIError } = require('../helpers');
+const { baseUrl, retriesAllowed } = require('../config/vars');
 
 /**
  * get a URL
  * @param {Object} urlData
  * @return {Promise<URL>}
  */
-exports.getUrl = async urlData => {
+exports.getUrl = async (urlData) => {
   const url = await Url.findOne({ ...urlData });
   return url;
 };
@@ -19,7 +19,7 @@ exports.getUrl = async urlData => {
  * @param {String} originalUrl
  * @return {Promise} shortUrl
  */
-exports.generateShortUrl = async originalUrl => {
+exports.generateShortUrl = async (originalUrl) => {
   let url = await this.getUrl({ originalUrl });
   let tries = 0;
   if (url) {
@@ -36,19 +36,19 @@ exports.generateShortUrl = async originalUrl => {
   } while (tries <= retriesAllowed && urlIsExist);
 
   if (urlIsExist) {
-    winston.error("Unable to generate unique short URL");
+    winston.error('Unable to generate unique short URL');
     throw new APIError({
-      message: "Unable to generate unique short URL, try again later",
-      status: httpStatus.UNPROCESSABLE_ENTITY
+      message: 'Unable to generate unique short URL, try again later',
+      status: httpStatus.UNPROCESSABLE_ENTITY,
     });
   }
 
-  const shortUrl = baseUrl + "/" + urlCode;
+  const shortUrl = `${baseUrl}/${urlCode}`;
 
   url = new Url({
     originalUrl,
     shortUrl,
-    urlCode
+    urlCode,
   });
 
   await url.save();

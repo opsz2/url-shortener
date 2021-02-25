@@ -1,27 +1,27 @@
-const winston = require("winston");
-const { port, env } = require("./config/vars");
-require("winston-logrotate");
+const winston = require('winston');
+const { port, env } = require('./config/vars');
+require('winston-logrotate');
 
-const serviceName = "URL Shortener API";
+const serviceName = 'URL Shortener API';
 
-require("./config/logger")(serviceName, winston);
-const app = require("./config/express");
-const mongoose = require("./config/mongoose");
+require('./config/logger')(serviceName, winston);
+const app = require('./config/express');
+const mongoose = require('./config/mongoose');
 
-process.on("unhandledRejection", err => {
+process.on('unhandledRejection', (err) => {
   winston.error(err);
 });
 
-process.on("uncaughtException", err => {
+process.on('uncaughtException', (err) => {
   winston.error(err);
 });
 
 const consoleTransport = new winston.transports.Console({
-  level: "info"
+  level: 'info',
 });
 
-if (process.env.NODE_ENV === "development") {
-  consoleTransport.level = "debug";
+if (process.env.NODE_ENV === 'development') {
+  consoleTransport.level = 'debug';
 }
 
 const init = async () => {

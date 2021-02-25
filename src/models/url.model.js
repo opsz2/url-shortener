@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const schemaoptions = require("./schemaoptions");
+const mongoose = require('mongoose');
+const schemaoptions = require('./schemaoptions');
 
 const urlSchemaOptions = schemaoptions.default();
 
@@ -9,19 +9,19 @@ const urlSchema = mongoose.Schema(
     urlCode: {
       type: String,
       required: true,
-      unique: true
+      unique: true,
     },
     originalUrl: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
     },
     shortUrl: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
-  urlSchemaOptions
+  urlSchemaOptions,
 );
 
 /**
@@ -29,9 +29,9 @@ const urlSchema = mongoose.Schema(
  * @param {string} urlCode
  * @return {Promise<boolean>}
  */
-urlSchema.statics.isUrlCodeExist = async function(urlCode) {
+urlSchema.statics.isUrlCodeExist = async function (urlCode) {
   const url = await this.findOne({ urlCode });
   return !!url;
 };
 
-module.exports = mongoose.model("Url", urlSchema);
+module.exports = mongoose.model('Url', urlSchema);

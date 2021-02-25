@@ -1,13 +1,13 @@
-const express = require("express");
-const morgan = require("morgan");
-const bodyParser = require("body-parser");
-const compress = require("compression");
-const methodOverride = require("method-override");
-const cors = require("cors");
-const helmet = require("helmet");
-const routes = require("../routes");
-const { logs } = require("./vars");
-const error = require("../middlewares/error");
+const express = require('express');
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const compress = require('compression');
+const methodOverride = require('method-override');
+const cors = require('cors');
+const helmet = require('helmet');
+const routes = require('../routes');
+const { logs } = require('./vars');
+const error = require('../middlewares/error');
 
 /**
  * Express instance
@@ -37,7 +37,7 @@ app.use(helmet());
 app.use(cors());
 
 // mount api routes
-app.use("/", routes);
+app.use('/', routes);
 
 // if error is not an instanceOf APIError, convert it.
 app.use(error.converter);

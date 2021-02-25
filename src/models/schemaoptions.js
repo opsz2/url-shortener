@@ -5,9 +5,9 @@ module.exports.default = () => ({
     transform: (doc, ret) => {
       defaultToJSONTransform(doc, ret);
     },
-    minimize: false
+    minimize: false,
   },
-  toObject: { virtuals: true, minimize: false }
+  toObject: { virtuals: true, minimize: false },
 });
 
 /* eslint-disable no-param-reassign */

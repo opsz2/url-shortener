@@ -1,1 +1,1 @@
-exports.Url = require("./url.model");
+exports.Url = require('./url.model');
