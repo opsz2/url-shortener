@@ -10,14 +10,26 @@ Before installing, [download and install Node.js](https://nodejs.org/en/download
 
 Install all needed modules using the URL [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally)
 
+Install dependencies:
+
+```bash
+$ npm install
+```
+
+Start the development server:
+
 ```shell
-npm install
+# Dont forget to make a copy of .env from .env.example
 
-# DOnt forget to make a copy of .env from .env.example
-
-
-# Start Development server
 npm run dev
+```
+
+Start the server:
+
+```shell
+# Dont forget to make a copy of .env from .env.example
+
+$ npm start
 ```
 
 ## Configuration
